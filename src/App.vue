@@ -13,7 +13,14 @@
             {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
           </h3>
           <div class="accordion-item-body">
-              {{data}}
+            responses {{data.responses.length}}
+            <div v-for="response in data.responses">
+              {{response.status}}
+            </div>
+            tests {{data.tests.length}}
+            <div v-for="test in data.tests">
+              {{test.method}} {{test.path}}
+            </div>
           </div>
         </div>
 
