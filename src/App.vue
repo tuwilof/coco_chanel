@@ -1,17 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b>actions:</b>
+    <div v-for="data in myJson.actions">
+      {{data.method}} {{data.path.path}}
+    </div>
+
+    <b>tests:</b>
+    <div v-for="data in myJson.tests">
+      {{data}}
+    </div>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import json from '/Users/dima/pet_projects/open_source/report.json'
 
 export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      myJson: json
+    }
   }
 }
 </script>
