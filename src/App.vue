@@ -7,17 +7,25 @@
 
         <div class="accordion-item">
           <h3 v-if="data.tests.length == 0" class="accordion-item-head" v-on:click="accordion">
-            {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
+            {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses {{data.responses.length}}
           </h3>
           <h3 v-else style="background-color: #ff0000;" class="accordion-item-head" v-on:click="accordion">
-            {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
+            {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses {{data.responses.length}}
           </h3>
           <div class="accordion-item-body">
-            responses {{data.responses.length}}
             <div v-for="response in data.responses">
-              {{response.status}}
+              <div class="accordion-item">
+                <h3 class="accordion-item-head" v-on:click="accordion" style="margin-left:100px;">
+                  {{response.status}}, tests {{response.tests.length}}
+                </h3>
+                <div class="accordion-item-body" style="margin-left:100px;">
+                  <div v-for="test in response.tests">
+                    {{test.method}} {{test.path}}
+                  </div>
+                </div>
+              </div>
+
             </div>
-            tests {{data.tests.length}}
             <div v-for="test in data.tests">
               {{test.method}} {{test.path}}
             </div>
