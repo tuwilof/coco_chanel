@@ -1,16 +1,26 @@
 <template>
   <div id="app">
-    <b>actions:</b>
-    <div v-for="data in myJson.actions">
-      <div v-if="data.tests.length == 0">
-        {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
-      </div>
-      <div v-else style="background-color: #ff0000;">
-        {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
+
+    <b>actions {{myJson.actions.length}}</b>
+    <div class="accordion" id="accordion">
+      <div v-for="data in myJson.actions">
+
+        <div class="accordion-item">
+          <h3 v-if="data.tests.length == 0" class="accordion-item-head" v-on:click="accordion">
+            {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
+          </h3>
+          <h3 v-else style="background-color: #ff0000;" class="accordion-item-head" v-on:click="accordion">
+            {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
+          </h3>
+          <div class="accordion-item-body">
+              {{data}}
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <b>tests:</b>
+    <b>tests {{myJson.tests.length}}</b>
     <div v-for="data in myJson.tests">
       {{data}}
     </div>
@@ -30,6 +40,11 @@ export default {
     return {
       myJson: json
     }
+  },
+  methods: {
+    accordion: function (event) {
+      event.target.classList.toggle('active');
+    }
   }
 }
 </script>
@@ -42,5 +57,34 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.accordion-item{
+  position: relative;
+}
+.accordion-item-head{
+  background-color: #dfdfdf;
+  border-top-left-radius: 5px ;
+  border-top-right-radius: 5px;
+  cursor: pointer;
+  padding:10px;
+}
+.accordion-item-head:after{
+  content: ' > ';
+  display: block;
+  height: 29px;
+  position: absolute;
+  right: 25px;
+  transform: rotate(90deg) scaleY(2);
+  top: 8px;
+}
+.accordion-item-head.active:after{
+  content: ' < ';
+}
+.accordion-item-body{
+  display: none;
+}
+.accordion-item-head.active + .accordion-item-body{
+  display: block !important;
 }
 </style>
