@@ -2,7 +2,12 @@
   <div id="app">
     <b>actions:</b>
     <div v-for="data in myJson.actions">
-      {{data.method}} {{data.path.path}}
+      <div v-if="data.tests.length == 0">
+        {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
+      </div>
+      <div v-else style="background-color: #ff0000;">
+        {{data.method}} {{data.path.path}} tests: {{data.tests.length}}
+      </div>
     </div>
 
     <b>tests:</b>
