@@ -30,11 +30,24 @@
 
                                     <div v-for="combination in response.combination[0]">
                                         <div class="accordion-item">
-                                            <h3 class="accordion-item-head" v-on:click="accordion" style="margin-left:300px;">
-                                                {{combination[1][0]}}  {{combination[1][1]}}
+                                            <h3  v-if="combination.length == 3" class="accordion-item-head" v-on:click="accordion" style="margin-left:300px;">
+                                                {{combination[1][0]}}  {{combination[1][1]}} tests: {{combination.length}}
                                             </h3>
+                                            <h3 v-else style="background-color: #ff0000; margin-left:300px;" class="accordion-item-head" v-on:click="accordion">
+                                                {{combination[1][0]}}  {{combination[1][1]}} tests: {{combination.length}}
+                                            </h3>
+
                                             <div class="accordion-item-body" style="margin-left:300px;">
                                                 {{combination[0]}}
+
+                                                <p>tests:</p>
+                                                {{combination[2]}}
+
+                                                <p>error</p>
+                                                <div v-for="error in combination[3]">
+                                                    <p>{{error.test}}</p>
+                                                    <p>{{error.error}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
