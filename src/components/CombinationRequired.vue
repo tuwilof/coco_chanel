@@ -38,7 +38,7 @@
                                             </h3>
 
                                             <div class="accordion-item-body" style="margin-left:300px;">
-                                                {{combination[0]}}
+                                                <vue-json-compare :oldData="response.body" :newData="combination[0]"></vue-json-compare>
 
                                                 <p>tests:</p>
                                                 {{combination[2]}}
@@ -83,9 +83,13 @@
 </template>
 
 <script>
+    import vueJsonCompare from 'vue-json-compare'
     import json from '/Users/dima/pet_projects/open_source/report.json'
 
     export default {
+        components: {
+            vueJsonCompare
+        },
         data() {
             return {
                 myJson: json
