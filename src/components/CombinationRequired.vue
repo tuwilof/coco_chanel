@@ -30,7 +30,7 @@
 
                                     <div v-for="combination in response.combination">
                                         <div class="accordion-item">
-                                            <h3  v-if="combination['tests'] != []" class="accordion-item-head" v-on:click="accordion" style="margin-left:300px;">
+                                            <h3 v-if="combination['tests'].length != 0" class="accordion-item-head" v-on:click="accordion" style="margin-left:300px;">
                                                 {{combination['type']}}  {{combination['combination']}} tests: {{combination['tests'].length}}
                                             </h3>
                                             <h3 v-else style="background-color: #ff0000; margin-left:300px;" class="accordion-item-head" v-on:click="accordion">
