@@ -34,7 +34,7 @@
                                                 {{combination['type']}}  {{combination['combination']}} tests: {{combination['tests'].length}}
                                             </h3>
                                             <h3 v-else style="background-color: #ff0000; margin-left:300px;" class="accordion-item-head" v-on:click="accordion">
-                                                {{combination['type']}}  {{combination['combination']}} tests: {{combination['tests'].length}}
+                                                {{combination['type']}}  {{combination['combination']}} tests: {{combination['tests'].length}} not covered by tests
                                             </h3>
 
                                             <div class="accordion-item-body" style="margin-left:300px;">
