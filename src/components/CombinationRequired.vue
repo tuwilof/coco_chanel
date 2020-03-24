@@ -28,23 +28,23 @@
                                         </div>
                                     </div>
 
-                                    <div v-for="combination in response.combination[0]">
+                                    <div v-for="combination in response.combination">
                                         <div class="accordion-item">
-                                            <h3  v-if="combination.length == 3" class="accordion-item-head" v-on:click="accordion" style="margin-left:300px;">
-                                                {{combination[1][0]}}  {{combination[1][1]}} tests: {{combination.length}}
+                                            <h3  v-if="combination['tests'] != []" class="accordion-item-head" v-on:click="accordion" style="margin-left:300px;">
+                                                {{combination['type']}}  {{combination['combination']}} tests: {{combination['tests'].length}}
                                             </h3>
                                             <h3 v-else style="background-color: #ff0000; margin-left:300px;" class="accordion-item-head" v-on:click="accordion">
-                                                {{combination[1][0]}}  {{combination[1][1]}} tests: {{combination.length}}
+                                                {{combination['type']}}  {{combination['combination']}} tests: {{combination['tests'].length}}
                                             </h3>
 
                                             <div class="accordion-item-body" style="margin-left:300px;">
-                                                <vue-json-compare :oldData="response.body" :newData="combination[0]"></vue-json-compare>
+                                                <vue-json-compare :oldData="response.body" :newData="combination['json_schema']"></vue-json-compare>
 
                                                 <p>tests:</p>
-                                                {{combination[2]}}
+                                                {{combination['tests']}}
 
                                                 <p>error</p>
-                                                <div v-for="error in combination[3]">
+                                                <div v-for="error in combination['error']">
                                                     <p>{{error.test}}</p>
                                                     <p>{{error.error}}</p>
                                                 </div>
