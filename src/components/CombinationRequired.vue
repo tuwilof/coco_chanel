@@ -41,7 +41,10 @@
                                                 <vue-json-compare :oldData="response.body" :newData="combination['json_schema']"></vue-json-compare>
 
                                                 <p>tests:</p>
-                                                {{combination['tests']}}
+                                                <div v-for="test in combination['tests']">
+                                                    <vue-json-compare :oldData="test" :newData="test"></vue-json-compare>
+                                                    <br/>
+                                                </div>
 
                                                 <p>error</p>
                                                 <div v-for="error in combination['error']">
