@@ -117,4 +117,7 @@
     .alpaca-del {
         background-color: #160004;
     }
+    .alpaca-upd{
+        background-color: #423200;
+    }
 </style>
