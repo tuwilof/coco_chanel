@@ -107,11 +107,14 @@
 </script>
 
 <style>
+    /* darkmode */
     .alpaca-json{
         background-color: #131a20;
     }
-
     .alpaca-add{
         background-color: #004313;
+    }
+    .alpaca-del {
+        background-color: #160004;
     }
 </style>
