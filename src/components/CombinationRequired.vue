@@ -24,7 +24,7 @@
                                             json-schema
                                         </h3>
                                         <div class="accordion-item-body" style="margin-left:200px;">
-                                            {{response.body}}
+                                            <vue-json-compare :oldData="response.body" :newData="response.body"></vue-json-compare>
                                         </div>
                                     </div>
 
