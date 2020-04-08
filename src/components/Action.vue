@@ -1,6 +1,8 @@
 <template>
     <div>
-        {{this.$route.query.method}} {{this.$route.query.path}}
+        <p><router-link :to="{ name: 'Actions'}"><button> <- comeback in actions list <- </button></router-link></p>
+        <p>{{this.$route.query.method}} {{this.$route.query.path}}</p>
+
         <b>required {{myJson.actions.length}}?</b>
         <div class="accordion" id="accordion">
             <div v-for="data in myJson.actions">

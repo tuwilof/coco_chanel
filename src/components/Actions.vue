@@ -1,43 +1,18 @@
 <template>
     <div>
         <b>actions {{myJson.actions.length}}</b>
-        <div class="accordion" id="accordion">
-            <div v-for="data in myJson.actions">
+        <div v-for="data in myJson.actions">
 
-                <div class="accordion-item">
-                    <router-link :to="{ path: 'action', query: { method: data.method, path: data.path.path }}">
-                        {{data.method}} {{data.path.path}}
-                    </router-link>
-                    <h3 v-if="data.tests.length == 0" class="accordion-item-head" v-on:click="accordion">
-                        {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses
-                        {{data.responses.length}}
-                    </h3>
-                    <h3 v-else style="background-color: #ff0000;" class="accordion-item-head"
-                        v-on:click="accordion">
-                        {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses
-                        {{data.responses.length}}
-                    </h3>
-                    <div class="accordion-item-body">
-                        <div v-for="response in data.responses">
-                            <div class="accordion-item">
-                                <h3 class="accordion-item-head" v-on:click="accordion" style="margin-left:100px;">
-                                    {{response.status}}, tests {{response.tests.length}}
-                                </h3>
-                                <div class="accordion-item-body" style="margin-left:100px;">
-                                    <div v-for="test in response.tests">
-                                        {{test.method}} {{test.path}}
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div v-for="test in data.tests">
-                            {{test.method}} {{test.path}}
-                        </div>
+            <div class='action'>
+                <router-link :to="{ path: 'action', query: { method: data.method, path: data.path.path }}">
+                    <div class='method'>{{data.method}}</div>
+                    <div class='path'>{{data.path.path}}</div>
+                    <div v-for="response in data.responses">
+                        <div class='response'>{{response.status}}</div>
                     </div>
-                </div>
-
+                </router-link>
             </div>
+
         </div>
 
         <b>tests {{myJson.tests.length}}</b>
@@ -63,3 +38,55 @@
         }
     }
 </script>
+
+<style>
+    .action {
+        background-color: #424242;
+        color: #bababa;
+        margin: 2px 0px;
+        height: 20px;
+    }
+
+    .action:hover {
+        background-color: #2b2b2b;
+    }
+
+    .method {
+        width: 100px;
+        float: left;
+        padding: 0px 10px;
+        text-align: left;
+    }
+
+    .path {
+        width: 400px;
+        float: left;
+        text-align: left;
+    }
+
+    .response {
+        width: 50px;
+        float: left;
+        text-align: left;
+    }
+
+    a:link {
+        color: #bababa;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #bababa;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #bababa;
+        text-decoration: none;
+    }
+
+    a:active {
+        color: #bababa;
+        text-decoration: none;
+    }
+</style>
