@@ -7,8 +7,15 @@
                 <router-link :to="{ path: 'action', query: { method: data.method, path: data.path.path }}">
                     <div class='method'>{{data.method}}</div>
                     <div class='path'>{{data.path.path}}</div>
+
                     <div v-for="response in data.responses">
                         <div class='response'>{{response.status}}</div>
+
+                        <div v-for="combination in response.combination">
+                            <div v-if="combination['tests'].length == 0">
+                                <div class='error'>!</div>
+                            </div>
+                        </div>
                     </div>
                 </router-link>
             </div>
@@ -66,6 +73,13 @@
 
     .response {
         width: 50px;
+        float: left;
+        text-align: left;
+    }
+
+    .error {
+        color: red;
+        width: 10px;
         float: left;
         text-align: left;
     }
