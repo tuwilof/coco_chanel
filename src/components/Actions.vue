@@ -5,11 +5,17 @@
             <div v-for="data in myJson.actions">
 
                 <div class="accordion-item">
+                    <router-link :to="{ path: 'action', query: { method: data.method, path: data.path.path }}">
+                        {{data.method}} {{data.path.path}}
+                    </router-link>
                     <h3 v-if="data.tests.length == 0" class="accordion-item-head" v-on:click="accordion">
-                        {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses {{data.responses.length}}
+                        {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses
+                        {{data.responses.length}}
                     </h3>
-                    <h3 v-else style="background-color: #ff0000;" class="accordion-item-head" v-on:click="accordion">
-                        {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses {{data.responses.length}}
+                    <h3 v-else style="background-color: #ff0000;" class="accordion-item-head"
+                        v-on:click="accordion">
+                        {{data.method}} {{data.path.path}}, tests {{data.tests.length}}, responses
+                        {{data.responses.length}}
                     </h3>
                     <div class="accordion-item-body">
                         <div v-for="response in data.responses">

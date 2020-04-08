@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Actions from '@/components/Actions'
+import Action from '@/components/Action'
 import Responses from '@/components/Responses'
 import CombinationRequired from '@/components/CombinationRequired'
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/combination_required',
       name: 'CombinationRequired',
       component: CombinationRequired
-    }
+    },
+    {
+      path: '/action',
+      name: 'Action',
+      component: Action
+    },
   ]
 })
