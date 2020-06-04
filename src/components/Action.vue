@@ -78,6 +78,7 @@
                         </div>
                         <div v-for="test in data.tests">
                             {{test.method}} {{test.path}}
+                            <vue-json-compare :oldData="test" :newData="test"></vue-json-compare>
                         </div>
                     </div>
                 </div>
